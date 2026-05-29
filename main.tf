@@ -22,6 +22,12 @@ provider "cloudinit" {
 }
 
 # Variables
+variable "ssh_public_key_path" {
+  description = "Path to your SSH public key file"
+  type        = string
+  default     = "~/.ssh/id_rsa.pub"
+}
+
 variable "labelPrefix" {
   description = "Prefix for resource names"
   type        = string
@@ -147,7 +153,7 @@ resource "azurerm_virtual_machine" "main" {
 
     ssh_keys {
       path     = "/home/${var.admin_username}/.ssh/authorized_keys"
-      key_data = file("/Users/Daniyal/Desktop/Courses/Cloud/Semester 2/devops infra/cst8918-w25-A05-dani0197/id_rsa.pub")
+      key_data = file(var.ssh_public_key_path)
     }
   }
 

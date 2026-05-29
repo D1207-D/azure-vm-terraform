@@ -28,4 +28,5 @@
 *.tfstate.*
 .vscode
 .idea
-.idea
+.ideaid_rsa.pub
+id_rsa
